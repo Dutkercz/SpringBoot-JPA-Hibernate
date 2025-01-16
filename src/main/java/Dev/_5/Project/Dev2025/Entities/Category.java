@@ -1,5 +1,6 @@
 package Dev._5.Project.Dev2025.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +21,8 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
+    @ManyToMany(mappedBy = "categories") // "categories" é nome da coleção usada Products.
+    @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
     public Category() {
